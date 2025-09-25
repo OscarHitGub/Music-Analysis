@@ -24,14 +24,14 @@ if App_selection == "Spotify Data":
     )
     
     # Run de code voor de data van Artists
-    st.info("The popularity score is a score assigned by spotify to an artist/album/track/ect."
-            "This stat is based on a variëty of factors."
-            "The artist's popularity is calculated from the popularity of all the artist's tracks."
-            "The popularity of a track is a value between 0 and 100, with 100 being the most popular."
-            "The popularity is calculated by algorithm and is based, in the most part,"
-            "on the total number of plays the track has had and how recent those plays are.", icon="🚨")
-            
     st.title("🎧 Spotify Explorer")
+    st.info("The popularity score is a score assigned by spotify to an artist/album/track/ect.\n"
+            "This stat is based on a variëty of factors.\n"
+            "The artist's popularity is calculated from the popularity of all the artist's tracks.\n"
+            "The popularity of a track is a value between 0 and 100, with 100 being the most popular.\n"
+            "The popularity is calculated by algorithm and is based, in the most part, "
+            "on the total number of plays the track has had and how recent those plays are. ", icon="🚨")
+        
     if sortside_selectbox == "Per Artist":
         agt.artist_search()
         ra.Artist_tab()
@@ -45,4 +45,5 @@ if App_selection == "Spotify Data":
 elif App_selection == "Last.fm Charts":
 
     print("Hello Last.fm")
+
 
