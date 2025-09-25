@@ -30,7 +30,7 @@ if App_selection == "Spotify Data":
             "The artist's popularity is calculated from the popularity of all the artist's tracks.\n"
             "The popularity of a track is a value between 0 and 100, with 100 being the most popular.\n"
             "The popularity is calculated by algorithm and is based, in the most part, "
-            "on the total number of plays the track has had and how recent those plays are. ", icon="🚨")
+            "on the total number of plays the track has had and how recent those plays are. ", icon="❗")
         
     if sortside_selectbox == "Per Artist":
         agt.artist_search()
@@ -45,5 +45,6 @@ if App_selection == "Spotify Data":
 elif App_selection == "Last.fm Charts":
 
     print("Hello Last.fm")
+
 
 
