@@ -68,6 +68,20 @@ def artist_search():
     
             c1, c2 = st.columns([1,2], gap="large")
             with c1:
+                #aantal items per 'pagina'
+                page_size = 6  
+                
+                # slider voor selectie
+                page = st.slider(
+                    "Bladeren door albums", 
+                    0, len(df) // page_size, 0
+                )
+                
+                # bereken start- en eindindex
+                start = page * page_size
+                end = start + page_size
+                subset = df.iloc[start:end]
+
                 cols = st.columns(2)  # maak twee kolommen naast elkaar
                 for i, r in df.iterrows():
                     col = cols[i % 2]  # afwisselend links/rechts
@@ -179,4 +193,5 @@ def top_tracks():
         else:
 
             st.warning("No tracks found.")
+
 
