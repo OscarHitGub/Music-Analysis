@@ -68,32 +68,45 @@ def artist_search():
     
             c1, c2 = st.columns([1,2], gap="large")
             with c1:
-                # aantal items per pagina
-                page_size = 3  
+                page_size = 6
+                total_items = len(df)
+                total_pages = (total_items + page_size - 1) // page_size
                 
-                # initialiseer pagina in session_state
                 if "page" not in st.session_state:
                     st.session_state.page = 0
                 
-                # knoppen naast elkaar
-                prev, next = st.columns([1,1])
-                
-                with prev:
-                    if st.button("⬅️ Vorige", use_container_width=True):
+                # Navigatieknoppen
+                col_prev, col_info, col_next = st.columns([1,2,1])
+                with col_prev:
+                    if st.button("Vorige", key="prev_btn"):
                         if st.session_state.page > 0:
                             st.session_state.page -= 1
                 
-                with next:
-                    if st.button("Volgende ➡️", use_container_width=True):
-                        if (st.session_state.page + 1) * page_size < len(df):
+                with col_info:
+                    st.write(f"Pagina {st.session_state.page + 1} van {total_pages}")
+                
+                with col_next:
+                    if st.button("Volgende", key="next_btn"):
+                        if st.session_state.page < total_pages - 1:
                             st.session_state.page += 1
                 
-                # bereken start en eind
+                # Subset van deze pagina
                 start = st.session_state.page * page_size
                 end = start + page_size
                 subset = df.iloc[start:end]
-                cols = st.columns(2)  # maak twee kolommen naast elkaar
-                for i, r in df.iterrows():
+                
+                # Verdeel covers/audio over 2 kolommen
+                cols = st.columns(2)
+                for idx, row in enumerate(subset.itertuples(index=False)):
+                    col = cols[idx % 2]
+                    with col:
+                        if getattr(row, "Cover", None):
+                            st.image(row.Cover, width=160, caption=getattr(row, "Track", ""))
+                        if getattr(row, "Preview", None):
+                            st.audio(row.Preview)
+                        st.markdown("---")
+
+""""                for i, r in df.iterrows():
                     col = cols[i % 2]  # afwisselend links/rechts
                     with col:
                         if r["Cover"]:
@@ -101,6 +114,7 @@ def artist_search():
                         if r["Preview"]:
                             st.audio(r["Preview"])
                         st.markdown("---")
+                st.write(f"Pagina {st.session_state.page + 1} van {-(len(df) // -page_size)}")""""
             with c2:
                 st.subheader("Top tracks")
                 st.dataframe(df[["Track","Album","Popularity"]], use_container_width=True)
@@ -203,6 +217,7 @@ def top_tracks():
         else:
 
             st.warning("No tracks found.")
+
 
 
 
