@@ -68,10 +68,15 @@ def artist_search():
     
             c1, c2 = st.columns([1,2], gap="large")
             with c1:
-                for _, r in df.iterrows():
-                    if r["Cover"]: st.image(r["Cover"], width=160, caption=r["Track"])
-                    if r["Preview"]: st.audio(r["Preview"])
-                    st.markdown("---")
+                cols = st.columns(2)  # maak twee kolommen naast elkaar
+                for i, r in df.iterrows():
+                    col = cols[i % 2]  # afwisselend links/rechts
+                    with col:
+                        if r["Cover"]:
+                            st.image(r["Cover"], width=160, caption=r["Track"])
+                        if r["Preview"]:
+                            st.audio(r["Preview"])
+                        st.markdown("---")
             with c2:
                 st.subheader("Top tracks")
                 st.dataframe(df[["Track","Album","Popularity"]], use_container_width=True)
@@ -174,3 +179,4 @@ def top_tracks():
         else:
 
             st.warning("No tracks found.")
+
