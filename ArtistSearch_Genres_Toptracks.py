@@ -79,7 +79,7 @@ def artist_search():
                         st.markdown("---")
             with c2:
                 st.subheader("Top tracks")
-                st.dataframe(df[["Track","Album","Popularity"]], width=400)
+                st.dataframe(df[["Track","Album","Popularity"]], use_container_width=True)
     else:
         st.info("Type an artist name above and press Enter.")
 
@@ -179,6 +179,7 @@ def top_tracks():
         else:
 
             st.warning("No tracks found.")
+
 
 
 
