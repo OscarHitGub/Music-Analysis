@@ -43,7 +43,8 @@ if App_selection == "Spotify Data":
         agt.genres()
         
 elif App_selection == "Last.fm Charts":
-     lc
+    print("a")
+
 
 
 
