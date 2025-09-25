@@ -73,7 +73,7 @@ def artist_search():
                     col = cols[i % 3]  # afwisselend links/rechts
                     with col:
                         if r["Cover"]:
-                            st.image(r["Cover"], width=160, caption=r["Track"])
+                            st.image(r["Cover"], width=140, caption=r["Track"])
                         if r["Preview"]:
                             st.audio(r["Preview"])
                         st.markdown("---")
@@ -179,6 +179,7 @@ def top_tracks():
         else:
 
             st.warning("No tracks found.")
+
 
 
 
