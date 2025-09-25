@@ -1,0 +1,4 @@
+pandas
+spotipy
+plotly.express
+statsmodels.api
