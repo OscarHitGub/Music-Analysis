@@ -8,13 +8,10 @@ import statsmodels.api as sm
 st.set_page_config(page_title="Spotify Explorer", page_icon="🎧", layout="wide")
 
 # login
-@st.cache_resource
-def get_spotify():
-    creds = st.secrets["spotify"]  # .streamlit/secrets.toml with client_id & client_secret
-    auth = SpotifyClientCredentials(client_id=creds["client_id"], client_secret=creds["client_secret"])
-    return spotipy.Spotify(auth_manager=auth)
-
-sp = get_spotify()
+CLIENT_ID = 'b87f7c4564b94a8482eb06c3b1c643fb'
+CLIENT_SECRET = 'e9266877b0d64a73a9011127afb7a706'
+auth_manager = SpotifyClientCredentials(client_id=CLIENT_ID, client_secret=CLIENT_SECRET)
+sp = spotipy.Spotify(auth_manager=auth_manager)
 
 # func
 def _first_artist_name(obj):
@@ -175,4 +172,5 @@ def top_tracks():
             st.subheader("🎶 Top 10 Tracks by Popularity")
             st.dataframe(top10, use_container_width=True)
         else:
+
             st.warning("No tracks found.")
