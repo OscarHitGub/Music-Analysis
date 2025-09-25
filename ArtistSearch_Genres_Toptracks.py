@@ -68,6 +68,30 @@ def artist_search():
     
             c1, c2 = st.columns([1,2], gap="large")
             with c1:
+                # aantal items per pagina
+                page_size = 3  
+                
+                # initialiseer pagina in session_state
+                if "page" not in st.session_state:
+                    st.session_state.page = 0
+                
+                # knoppen naast elkaar
+                prev, next = st.columns([1,1])
+                
+                with prev:
+                    if st.button("⬅️ Vorige", use_container_width=True):
+                        if st.session_state.page > 0:
+                            st.session_state.page -= 1
+                
+                with next:
+                    if st.button("Volgende ➡️", use_container_width=True):
+                        if (st.session_state.page + 1) * page_size < len(df):
+                            st.session_state.page += 1
+                
+                # bereken start en eind
+                start = st.session_state.page * page_size
+                end = start + page_size
+                subset = df.iloc[start:end]
                 cols = st.columns(2)  # maak twee kolommen naast elkaar
                 for i, r in df.iterrows():
                     col = cols[i % 2]  # afwisselend links/rechts
@@ -179,6 +203,7 @@ def top_tracks():
         else:
 
             st.warning("No tracks found.")
+
 
 
 
