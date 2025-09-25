@@ -66,7 +66,7 @@ def artist_search():
                 })
             df = pd.DataFrame(rows)
     
-            c1, c2 = st.columns([1,2], gap="large")
+            c1, c2 = st.columns([1,1], gap="large")
             with c1:
                 cols = st.columns(3)
                 for i, r in df.iterrows():
@@ -179,6 +179,7 @@ def top_tracks():
         else:
 
             st.warning("No tracks found.")
+
 
 
 
