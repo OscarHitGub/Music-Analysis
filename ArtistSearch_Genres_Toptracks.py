@@ -77,7 +77,6 @@ def artist_search():
                         if r["Preview"]:
                             st.audio(r["Preview"])
                         st.markdown("---")
-                st.write(f"Pagina {st.session_state.page + 1} van {-(len(df) // -page_size)}")
             with c2:
                 st.subheader("Top tracks")
                 st.dataframe(df[["Track","Album","Popularity"]], use_container_width=True)
@@ -180,6 +179,7 @@ def top_tracks():
         else:
 
             st.warning("No tracks found.")
+
 
 
 
