@@ -68,9 +68,9 @@ def artist_search():
     
             c1, c2 = st.columns([1,2], gap="large")
             with c1:
-                cols = st.columns(2)
+                cols = st.columns(3)
                 for i, r in df.iterrows():
-                    col = cols[i % 2]  # afwisselend links/rechts
+                    col = cols[i % 3]  # afwisselend links/rechts
                     with col:
                         if r["Cover"]:
                             st.image(r["Cover"], width=160, caption=r["Track"])
@@ -179,6 +179,7 @@ def top_tracks():
         else:
 
             st.warning("No tracks found.")
+
 
 
 
