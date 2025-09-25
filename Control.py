@@ -7,7 +7,7 @@ Created on Wed Sep 24 15:58:34 2025
 # FILE IMPORT #
 import read_ArtistData as ra
 import ArtistSearch_Genres_Toptracks as agt
-
+import lastfm_charts as lc
 import streamlit as st
 
 st.set_page_config(page_title="Music Analysis", page_icon="🎧")
@@ -43,8 +43,8 @@ if App_selection == "Spotify Data":
         agt.genres()
         
 elif App_selection == "Last.fm Charts":
+     lc
 
-    print("Hello Last.fm")
 
 
 
