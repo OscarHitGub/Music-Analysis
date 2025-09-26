@@ -7,6 +7,7 @@ Created on Tue Sep 23 14:57:20 2025
 import streamlit as st
 import plotly.express as px
 import pandas as pd
+import statsmodels.api as sm
 
 def Artist_tab():
     # Import de CSV file van artist data
@@ -146,3 +147,4 @@ def Artist_tab():
                          )
     fig_PvA.update_layout()
     st.plotly_chart(fig_PvA, use_container_width=False)
+
