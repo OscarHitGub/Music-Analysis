@@ -3,7 +3,6 @@ import pandas as pd
 import spotipy
 from spotipy.oauth2 import SpotifyClientCredentials
 import plotly.express as px
-import statsmodels.api as sm
 
 st.set_page_config(page_title="Spotify Explorer", page_icon="🎧", layout="wide")
 
@@ -179,6 +178,7 @@ def top_tracks():
         else:
 
             st.warning("No tracks found.")
+
 
 
 
